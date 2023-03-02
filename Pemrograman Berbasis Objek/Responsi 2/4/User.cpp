@@ -6,10 +6,10 @@ int n_user = 0;
 
 // ctor, parameter: nama pengguna
 User::User(char* nama) {
-    this->name = new char[strlen(name)];
+    this->name = new char[strlen(nama)];
     strcpy(this->name, nama);
     this->num_of_favourite_music = 0;
-    music_list = new char* [this->num_of_favourite_music];
+    this->music_list = new char* [this->num_of_favourite_music];
     n_user++;
 }
 
@@ -18,7 +18,7 @@ User::User(const User& t) {
     this->name = new char[strlen(t.name)];
     strcpy(this->name, t.name);
     this->num_of_favourite_music = t.num_of_favourite_music;
-    music_list = new char* [this->num_of_favourite_music];
+    this->music_list = new char* [this->num_of_favourite_music];
     for(int i=0; i < this->num_of_favourite_music; i++) {
         this->music_list[i] = new char[strlen(t.music_list[i])];
         strcpy(this->music_list[i], t.music_list[i]);
@@ -34,15 +34,13 @@ User::User(const User& t) {
 User::~User() {
     delete [] this->music_list;
     printf("User ");
-    for(int i=0; i<strlen(this->name); i++) {
-        printf("%c", this->name);
-    }
+    printf("%s", this->name);
     printf(" deleted\n");
-    for(int i=0; i<strlen(this->name); i++) {
-        delete [] music_list[i];
+    for(int i=0; i< this->num_of_favourite_music; i++) {
+        delete [] this->music_list[i];
     }
-    delete [] music_list;
-    delete [] name;
+    delete [] this->music_list;
+    delete [] this->name;
     n_user--;
 }
 

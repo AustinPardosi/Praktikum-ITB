@@ -7,11 +7,12 @@ PremiumUser::PremiumUser(char* nama) : User(nama){
 }
 
 // cctor
-PremiumUser::PremiumUser(const PremiumUser& t) : User(t.nam) {
+PremiumUser::PremiumUser(const PremiumUser& t) : User(t) {
     this->active = t.active;
     this->num_of_music_downloaded = t.num_of_music_downloaded;
 
-} // implementasikan jika diperlukan, 
+} 
+// implementasikan jika diperlukan, 
 // jika tidak diperlukan, hapus cctor
 // jika perlu diimplementasikan, print "Premium User Copied<endl>"
 
